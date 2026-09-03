@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cardápio digital da Cantina SENAI.">
+    <title>Cantina+ | Seu intervalo mais gostoso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <a class="marca" href="#inicio" aria-label="Página inicial">
+            <span class="marca-simbolo">C+</span>
+            <span>Cantina<strong>+</strong></span>
+        </a>
+
+        <nav>
+            <a href="#cardapio">Cardápio</a>
+            <a href="#pedido">Meu pedido</a>
+            <span class="aberto"><i></i> Aberto agora</span>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-conteudo">
+                <span class="etiqueta">🍴 Cantina digital SENAI</span>
+                <h1>Seu intervalo começa <em>por aqui.</em></h1>
+                <p>
+                    Consulte o cardápio, escolha seu favorito e gere o código
+                    do pedido antes de chegar ao balcão.
+                </p>
+
+                <div class="hero-acoes">
+                    <a class="botao botao-principal" href="#cardapio">
+                        Ver cardápio
+                    </a>
+                    <a class="botao botao-secundario" href="#pedido">
+                        Fazer pedido
+                    </a>
+                </div>
+
+                <div class="vantagens">
+                    <span>✓ Pedido rápido</span>
+                    <span>✓ Cupom automático</span>
+                    <span>✓ Retirada no balcão</span>
+                </div>
+            </div>
+
+            <aside class="cupom-hero">
+                <div class="cupom-topo">
+                    <span>CUPOM DO DIA</span>
+                    <span class="cupom-icone">%</span>
+                </div>
+                <strong id="desconto-hero">--%</strong>
+                <p>de desconto no pedido de hoje</p>
+                <div class="linha-pontilhada"></div>
+                <small>Aplicado automaticamente pelo backend</small>
+            </aside>
+        </section>
+
+        <section class="secao-cardapio" id="cardapio">
+            <div class="titulo-secao">
+                <div>
+                    <span class="sobrelinha">FEITO PARA O SEU INTERVALO</span>
+                    <h2>Cardápio da cantina</h2>
+                </div>
+                <p>Selecione uma categoria e escolha seu produto.</p>
+            </div>
+
+            <div class="filtros" id="filtros" aria-label="Categorias">
+                <button class="filtro ativo" data-categoria="Todos" type="button">
+                    Todos
+                </button>
+            </div>
+
+            <div class="conteudo-principal">
+                <div class="grade-produtos" id="grade-produtos" aria-live="polite">
+                    <div class="estado">Buscando o cardápio no banco...</div>
+                </div>
+
+                <aside class="painel-pedido" id="pedido">
+                    <div class="painel-cabecalho">
+                        <span class="passo">SEU PEDIDO</span>
+                        <h2>Quase pronto!</h2>
+                        <p>Escolha um produto e informe seus dados.</p>
+                    </div>
+
+                    <div class="produto-escolhido" id="produto-escolhido">
+                        <span class="produto-vazio-icone">👆</span>
+                        <div>
+                            <strong>Nenhum produto escolhido</strong>
+                            <small>Clique em “Escolher” no cardápio.</small>
+                        </div>
+                    </div>
+
+                    <form id="form-pedido">
+                        <input id="produto-id" name="produtoId" type="hidden">
+
+                        <label for="nome">Nome do aluno</label>
+                        <input id="nome" name="nomeAluno" type="text"
+                               maxlength="100" placeholder="Digite seu nome" required>
+
+                        <div class="linha-formulario">
+                            <div>
+                                <label for="matricula">Matrícula</label>
+                                <input id="matricula" name="matricula" type="text"
+                                       maxlength="30" placeholder="Ex.: 20261234" required>
+                            </div>
+                            <div>
+                                <label for="periodo">Período</label>
+                                <select id="periodo" name="periodo" required>
+                                    <option value="">Selecione</option>
+                                    <option>Manhã</option>
+                                    <option>Tarde</option>
+                                    <option>Noite</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="linha-quantidade">
+                            <div>
+                                <label for="quantidade">Quantidade</label>
+                                <input id="quantidade" name="quantidade" type="number"
+                                       min="1" max="10" value="1" required>
+                            </div>
+                            <div class="preco-previa">
+                                <small>Prévia com desconto</small>
+                                <strong id="previa-total">R$ 0,00</strong>
+                            </div>
+                        </div>
+
+                        <button class="botao botao-principal botao-pedido"
+                                type="submit">
+                            Gerar código do pedido
+                        </button>
+                    </form>
+
+                    <p class="aviso-calculo">
+                        🔒 O valor definitivo é calculado pelo backend.
+                    </p>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span class="marca marca-rodape">
+            <span class="marca-simbolo">C+</span>
+            <span>Cantina<strong>+</strong></span>
+        </span>
+        <p>Projeto integrador • Frontend + Java + MySQL</p>
+    </footer>
+
+    <dialog id="modal-cupom">
+        <div class="modal-conteudo">
+            <button class="fechar-modal" id="fechar-modal" type="button"
+                    aria-label="Fechar">×</button>
+            <div class="sucesso">✓</div>
+            <span class="sobrelinha">PEDIDO CONFIRMADO</span>
+            <h2>Apresente este código</h2>
+            <p class="modal-subtitulo">Seu pedido foi salvo no banco de dados.</p>
+
+            <div class="ticket">
+                <span>CÓDIGO DE RETIRADA</span>
+                <strong id="resultado-codigo">CANT-00000000</strong>
+                <div class="ticket-detalhes">
+                    <div>
+                        <small>Produto</small>
+                        <b id="resultado-produto">--</b>
+                    </div>
+                    <div>
+                        <small>Quantidade</small>
+                        <b id="resultado-quantidade">--</b>
+                    </div>
+                </div>
+                <div class="ticket-valores">
+                    <span>Valor original <b id="resultado-original">--</b></span>
+                    <span>Desconto <b id="resultado-desconto">--</b></span>
+                    <span class="total">Total <b id="resultado-total">--</b></span>
+                </div>
+            </div>
+
+            <button class="botao botao-principal botao-novo"
+                    id="novo-pedido" type="button">
+                Fazer novo pedido
+            </button>
+        </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
