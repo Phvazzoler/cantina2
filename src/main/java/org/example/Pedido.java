@@ -4,18 +4,17 @@ public class Pedido {
 
     private int id;
     private String codigo;
-    private String matricula ;
+    private String matricula;
     private String nomeAluno;
     private String periodo;
     private int produtoId;
     private int quantidade;
     private String produtoNome;
-    private  double valorDigital;
-    private double valorOrignal;
-    private double percentualDescoto;
-    private double  getValorFinal;
+    private double valorDigital;
+    private double valorOriginal;
+    private double percentualDesconto;
+    private double valorFinal;
     private String status;
-
 
     public int getQuantidade() {
         return quantidade;
@@ -89,28 +88,28 @@ public class Pedido {
         this.valorDigital = valorDigital;
     }
 
-    public double getValorOrignal() {
-        return valorOrignal;
+    public double getValorOriginal() {
+        return valorOriginal;
     }
 
-    public void setValorOrignal(double valorOrignal) {
-        this.valorOrignal = valorOrignal;
+    public void setValorOriginal(double valorOriginal) {
+        this.valorOriginal = valorOriginal;
     }
 
-    public double getPercentualDescoto() {
-        return percentualDescoto;
+    public double getPercentualDesconto() {
+        return percentualDesconto;
     }
 
-    public void setPercentualDescoto(double percentualDescoto) {
-        this.percentualDescoto = percentualDescoto;
+    public void setPercentualDesconto(double percentualDesconto) {
+        this.percentualDesconto = percentualDesconto;
     }
 
-    public double getGetValorFinal() {
-        return getValorFinal;
+    public double getValorFinal() {
+        return valorFinal;
     }
 
-    public void setGetValorFina(double getValorFina) {
-        this.getValorFinal = getValorFina;
+    public void setValorFinal(double valorFinal) {
+        this.valorFinal = valorFinal;
     }
 
     public String getStatus() {

@@ -1,16 +1,25 @@
 package org.example;
 
 public class Produto {
+
     private int id;
-    private String nome ;
+    private String nome;
     private String categoria;
     private String descricao;
     private double preco;
     private String emoji;
 
-    public Produto(){}
+    public Produto() {
+    }
 
-    public Produto(int id, String nome, String categoria, String descricao, double preco, String emoji) {
+    public Produto(
+            int id,
+            String nome,
+            String categoria,
+            String descricao,
+            double preco,
+            String emoji
+    ) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
@@ -42,7 +51,4 @@ public class Produto {
     public String getEmoji() {
         return emoji;
     }
-
-
-
 }
